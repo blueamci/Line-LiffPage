@@ -64,7 +64,7 @@
       if (!liff.isInClient()){
         console.log('網頁在外部');
       } else {
-        alert('確認在內部');
+        alert('確認在內部1');
       };
       const profile = await liff.getProfile();
       const userId = profile.userId;
@@ -98,7 +98,7 @@
       if (liff.isInClient()){
         alert(payload.latitude + ':' + payload.longitude + ':' + payload.timestamp);
       };
-      await delay(5000);
+        delay(5000);
         
         alert(JSON.stringify(payload));
         //fetch(GAS_WEBHOOK, {
