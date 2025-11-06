@@ -61,6 +61,8 @@
 
       if (!liff.isInClient()){
         console.log('網頁在外部');
+      } else {
+        alert('確認在內部');
       }
       const profile = await liff.getProfile();
       const userId = profile.userId;
@@ -72,6 +74,12 @@
         alert('您不在打卡清單中');
         return;
       }
+
+      if (liff.isInClient()){
+        alert(userId + ':' + displayName);
+      }
+
+      
       navigator.geolocation.getCurrentPosition(function(position) {
         const payload = {
           userId,
