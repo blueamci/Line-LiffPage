@@ -49,8 +49,9 @@
     const WHITELIST = ['U79020fb63e5c20703ee2cb9f34c0df02', 'Uyyyyyyyyyy']; // 你的 LINE 使用者 ID 清單
     const GAS_WEBHOOK = 'https://script.google.com/macros/s/AKfycby7ZdmGd61mSWBtn2yc4uxmD0NWMJoaDi3I4NyUZzpqsN9IPLB4AIZcS1iLxM0qWLFf/exec';
     const RENDER_WEBHOOK = 'https://line-render-bot.onrender.com/liff-checkin';
-
-    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}   
     async function startCheckIn() {
       await liff.init({ liffId: '2007367348-DMQKmVMy' });
       
@@ -98,7 +99,7 @@
       if (liff.isInClient()){
         alert(payload.latitude + ':' + payload.longitude + ':' + payload.timestamp);
       };
-        delay(5000);
+        await delay(5000);
         
         alert(JSON.stringify(payload));
         //fetch(GAS_WEBHOOK, {
