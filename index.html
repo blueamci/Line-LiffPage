@@ -53,17 +53,19 @@
 
     async function startCheckIn() {
       await liff.init({ liffId: '2007367348-DMQKmVMy' });
+      
       console.log('開始打卡流程');
+      
       if (!liff.isLoggedIn()) {
         liff.login();
         return;
-      }
+      };
 
       if (!liff.isInClient()){
         console.log('網頁在外部');
       } else {
         alert('確認在內部');
-      }
+      };
       const profile = await liff.getProfile();
       const userId = profile.userId;
       const displayName = profile.displayName;
@@ -73,11 +75,11 @@
       if (!WHITELIST.includes(userId)) {
         alert('您不在打卡清單中');
         return;
-      }
+      };
 
       if (liff.isInClient()){
         alert(userId + ':' + displayName);
-      }
+      };
 
       
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -92,6 +94,12 @@
         console.log('取得 latitude:', payload.latitude);
         console.log('取得 longitude:', payload.longitude);
         console.log('取得 timestamp:', payload.timestamp);
+
+      if (liff.isInClient()){
+        alert(payload.latitude + ':' + payload.longitude + ':' + payload.timestamp);
+      };
+
+        
         alert(JSON.stringify(payload));
         //fetch(GAS_WEBHOOK, {
         fetch(RENDER_WEBHOOK, {
