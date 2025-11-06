@@ -97,7 +97,7 @@
       if (liff.isInClient()){
         alert(payload.latitude + ':' + payload.longitude + ':' + payload.timestamp);
       };
-        delay(5000);
+        await delay(5000);
         
         alert(JSON.stringify(payload));
         //fetch(GAS_WEBHOOK, {
